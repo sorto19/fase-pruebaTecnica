@@ -1,0 +1,55 @@
+﻿@model List<Usuario>
+@{
+    ViewData["Title"] = "Pagina de Inicio";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Bienvenido</h1>
+    @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+</div>
+
+
+<div class="card">
+    <div class="card-header">
+        Lista de Usuarios
+    </div>
+    <div class="card-body">
+
+        <a asp-action="Usuario" asp-controller="Inicio" asp-route-idProducto="0" class="btn btn-success btn-sm">Nuevo producto</a>
+        @*<a asp-action="test" asp-controller="Home" class="btn btn-success">test</a>*@
+        <hr />
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Contraseña</th>
+                    <th>Telefono</th>
+                    <th>Departamento</th>
+                    <th>Municipio</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var item in Model){
+                    <tr>
+                        <td>@item.Nombre</td>
+                        <td>@item.Apellido</td>
+                        <td>@item.Email</td>
+                        <td>@item.Contraseña</td>
+                        <td>@item.Telefono</td>
+                        <td>@item.Departamento</td>
+                        <td>@item.Municipio</td>
+                        <td>
+                            <a asp-action="Usuario" asp-controller="Home" asp-route-idProducto="@item.IdUsuario" class="btn btn-primary btn-sm" >Editar</a>
+                            <a asp-action="Eliminar" asp-controller="Home" asp-route-idProducto="@item.IdUsuario" class="btn btn-danger btn-sm" >Eliminar</a>
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>
